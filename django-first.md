@@ -1,0 +1,61 @@
+title: 创建 Django 第一个应用
+date: 2015-04-16 09:26:16
+tags: Django
+categories: Python
+
+---
+本文档是官方入门教程的中文版摘要，作为了解 Django 的第一步。文档使用的环境：
+
+- 安装 Python3.2+
+- 安装 Django1.8+
+
+## 创建一个项目
+cd 到你要存储项目的目录，使用以下命令：
+```python
+$ django-admin startproject mysite
+```
+这将在当前目录下创建一个 mysite 的目录，目录的详细结构如下：
+```
+mysite/
+    manage.py
+    mysite/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+```
+
+- mysite/ 这个目录只是一个容器，用来放置项目，目录的名字并不重要你可以随时重命名。
+- manage.py 项目管理工具
+- mysite/ 这个才是你的项目的真正名字，整个项目包都放在里面。
+- mysite/__init__.py 用来告诉 Python 这是一个包，一般内容为空。
+- mysite/settings.py 项目配置文件
+- mysite/urls.py 站点的url设计说明，将站点比喻成一本书的话，这个可以说是站点的目录
+- mysite/wsgi.py 你站点 WSGI 部署的入口，为项目提供 wsgi 兼容 web 服务器的接口
+
+## 项目的配置
+打开 mysite/settings.py 文件，这是一个包含项目模块级别变量设置的 python 模块。
+### 数据库配置
+默认的数据库使用 SQLite。如果你只是初步的尝试，这个是最简单的选择。因为 python 内部已经包含 SQLite，所以你不需要再去配置数据库。如果你开始一个实际的开发项目的话，你最好还是配置一个更强的数据库，比如 PostgreSQL，这样可以避免后期数据库切换带来的复杂问题。
+
+配置数据库的几个要点：
+
+- 安装数据库的 python 驱动
+- 在配置文件的 DATABASE 项配置数据库的连接细节
+- 如果使用的是 MySQL 或者 PostgreSQL，你需要先建好你所设置的数据库
+
+数据库设置例子：
+
+```python
+# PostgreSQL 数据库
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mydatabase',
+        'USER': 'mydatabaseuser',
+        'PASSWORD': 'mypassword',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+```

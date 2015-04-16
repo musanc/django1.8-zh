@@ -17,4 +17,4 @@ Django 1.8 正式版发布了，这是一个 LTS 长期支持的版本。作为�
 ### 第一部分：迈出 Django 的第一步 （First steps）
 
 #### 第一章：项目创建和环境设置
-##### 1、安装和运行环境设置
+##### 1、[安装和运行环境设置](https://github.com/musanc/django1.8-zh/blob/master/notes/1.1.1.md)
